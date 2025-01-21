@@ -80,5 +80,19 @@ public class ContactList {
         }
     }
 
+    public void listStudents() {
+        for(int i = 0; i < contacts.size(); i++) {
+            if(contacts.get(i) instanceof Student) {
+                System.out.println(contacts.get(i));
+            }
+        }
+    }
+
+    public void run() {
+        Scanner scanner = new Scanner(System.in);
+
+
+    }
+
 
 }

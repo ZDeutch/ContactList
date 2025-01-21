@@ -91,6 +91,28 @@ public class ContactList {
     public void run() {
         Scanner scanner = new Scanner(System.in);
 
+        while (true) {
+            System.out.println("Menu:");
+            System.out.println("1. Add Contact");
+            System.out.println("2. Print Contacts");
+            System.out.println("3. Sort Contacts");
+            System.out.println("4. Search by First Name");
+            System.out.println("5. Search by Last Name");
+            System.out.println("6. Search by Phone Number");
+            System.out.println("7. List Students");
+            System.out.println("0. Exit");
+            System.out.println("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            if(choice == 0) {
+                System.out.println("Exiting...");
+                break;
+            }
+
+
+        }
 
     }
 

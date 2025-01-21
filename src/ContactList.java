@@ -88,20 +88,48 @@ public class ContactList {
         }
     }
 
+    private void Search(int searchBy) {
+        Scanner scannerhelp = new Scanner(System.in);
+        if(searchBy == 0) {
+            System.out.println("Enter a name:");
+            String fName = scannerhelp.nextLine();
+            for(int i = 0; i < contacts.size(); i++) {
+                if(contacts.get(i).getFirstName().equals(fName)) {
+                    System.out.println(contacts.get(i));
+                }
+            }
+        } else if(searchBy == 1) {
+            System.out.println("Enter a name:");
+            String lName = scannerhelp.nextLine();
+            for(int i = 0; i < contacts.size(); i++) {
+                if(contacts.get(i).getLastName().equals(lName)) {
+                    System.out.println(contacts.get(i));
+                }
+            }
+        } else if(searchBy == 2) {
+            System.out.println("Enter a phone number:");
+            String pNumber = scannerhelp.nextLine();
+            for (int i = 0; i < contacts.size(); i++) {
+                if (contacts.get(i).getPhoneNumber().equals(pNumber)) {
+                    System.out.println(contacts.get(i));
+                }
+            }
+        }
+    }
+
     public void run() {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println("Menu:");
             System.out.println("1. Add Contact");
-            System.out.println("2. Print Contacts");
-            System.out.println("3. Sort Contacts");
-            System.out.println("4. Search by First Name");
-            System.out.println("5. Search by Last Name");
-            System.out.println("6. Search by Phone Number");
-            System.out.println("7. List Students");
+            System.out.println("2. List All Contacts By First Names");
+            System.out.println("3. List All Contacts by Last Name");
+            System.out.println("4. List All Contacts by Phone Number");
+            System.out.println("5. List All Students");
+            System.out.println("6. Search by First Name");
+            System.out.println("7. Search by Last Name");
             System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -109,9 +137,35 @@ public class ContactList {
             if(choice == 0) {
                 System.out.println("Exiting...");
                 break;
+            } else if(choice == 1) {
+                addContact();
+                break;
+            } else if(choice == 2) {
+                sort(0);
+                printContacts();
+                break;
+            } else if(choice == 3) {
+                sort(1);
+                printContacts();
+                break;
+            } else if(choice == 4) {
+                sort(2);
+                printContacts();
+                break;
+            } else if(choice == 5) {
+                listStudents();
+                break;
+            } else if(choice == 6) {
+                Search(0);
+                break;
+            } else if(choice == 7) {
+                Search(1);
+                break;
+
+            } else if(choice == 8) {
+                Search(2);
+                break;
             }
-
-
         }
 
     }

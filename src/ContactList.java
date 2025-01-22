@@ -71,6 +71,7 @@ public class ContactList {
             for(int j = 0; j < contacts.size() - 1 - i; j++) {
                 swap = false;
 
+                // Only swap if the incremented contact has a attribute that is negative
                 if(sortBy == 0) {
                     swap = contacts.get(j).getFirstName().compareTo(contacts.get(j+1).getFirstName()) > 0;
                 } else if(sortBy == 1) {
@@ -102,7 +103,7 @@ public class ContactList {
     //Either first name, last name, or phone number
     private void Search(int searchBy) {
         Scanner scannerhelp = new Scanner(System.in);
-        if(searchBy == 0) {
+        if(searchBy == 0) { // Search by first name
             int count = 0;
             System.out.println("Enter a name:");
             String fName = scannerhelp.nextLine();
@@ -112,10 +113,10 @@ public class ContactList {
                 }
                 count++;
             }
-            if(count == 0) {
+            if(count == 0) { // If nothing is printed, tell the user
                 System.out.println(fName + " is not in the list");
             }
-        } else if(searchBy == 1) {
+        } else if(searchBy == 1) { // Search by last name
             int count = 0;
             System.out.println("Enter a name:");
             String lName = scannerhelp.nextLine();
@@ -128,7 +129,7 @@ public class ContactList {
             if(count == 0) {
                 System.out.println(lName + " is not in the list");
             }
-        } else if(searchBy == 2) {
+        } else if(searchBy == 2) { // Search by phone number
             int count = 0;
             System.out.println("Enter a phone number:");
             String pNumber = scannerhelp.nextLine();
@@ -145,7 +146,7 @@ public class ContactList {
     // Display menu
     public void run() {
         Scanner scanner = new Scanner(System.in);
-
+        // Run forever unless one breaks the while-loop
         while (true) {
             System.out.println("Menu:");
             System.out.println("1. Add Contact");
@@ -160,7 +161,7 @@ public class ContactList {
 
             int choice = scanner.nextInt();
             scanner.nextLine();
-        // Explain different casesthe
+        // Explain different cases
             if(choice == 0) {
                 System.out.println("Exiting...");
                 break;

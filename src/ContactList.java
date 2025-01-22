@@ -2,16 +2,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ContactList {
+    //Instance Variable
     private ArrayList<Person> contacts;
 
+    //Constructor
     ContactList() {
         contacts = new ArrayList<Person>();
     }
 
+    //Getter
     public ArrayList<Person> getContacts() {
         return contacts;
     }
 
+    //Adds a contact to ArrayList
     public void addContact() {
         Scanner s = new Scanner(System.in);
         while(true) {
@@ -19,6 +23,8 @@ public class ContactList {
             System.out.println("1. Student");
             System.out.println("2. Teacher");
             int output = s.nextInt();
+
+            //Add a Student
             if (output == 1) {
                 Person p1 = getInfo();
                 System.out.println("Grade: ");
@@ -27,6 +33,7 @@ public class ContactList {
                 contacts.add(s1);
                 break;
             }
+            //Add a Worker
             if (output == 2) {
                 Person p2 = getInfo();
                 System.out.println("Subject: ");
@@ -50,13 +57,14 @@ public class ContactList {
         Person p1 = new Person(fName, lName, pNumber);
         return p1;
     }
-
+    //Prints all contacts in list
     public void printContacts() {
         for(int i = 0; i < contacts.size(); i++) {
             System.out.println(contacts.get(i));
         }
     }
-
+    // Sorts the contacts based on the specific feature
+    // Either first name, last name, or phone number
     public void sort(int sortBy) {
         boolean swap;
         for(int i = 0; i < contacts.size() - 1; i++) {
@@ -72,6 +80,7 @@ public class ContactList {
                 }
 
                 if(swap) {
+                    // Swap the contacts
                     Person temp = contacts.get(j);
                     contacts.set(j,contacts.get(j + 1));
                     contacts.set(j + 1, temp);
@@ -80,6 +89,7 @@ public class ContactList {
         }
     }
 
+    // Lists all contacts that are Students
     public void listStudents() {
         for(int i = 0; i < contacts.size(); i++) {
             if(contacts.get(i) instanceof Student) {
@@ -88,25 +98,38 @@ public class ContactList {
         }
     }
 
+    //Searches contact list based on desired factor
+    //Either first name, last name, or phone number
     private void Search(int searchBy) {
         Scanner scannerhelp = new Scanner(System.in);
         if(searchBy == 0) {
+            int count = 0;
             System.out.println("Enter a name:");
             String fName = scannerhelp.nextLine();
             for(int i = 0; i < contacts.size(); i++) {
                 if(contacts.get(i).getFirstName().equals(fName)) {
                     System.out.println(contacts.get(i));
                 }
+                count++;
+            }
+            if(count == 0) {
+                System.out.println(fName + " is not in the list");
             }
         } else if(searchBy == 1) {
+            int count = 0;
             System.out.println("Enter a name:");
             String lName = scannerhelp.nextLine();
             for(int i = 0; i < contacts.size(); i++) {
                 if(contacts.get(i).getLastName().equals(lName)) {
                     System.out.println(contacts.get(i));
                 }
+                count++;
+            }
+            if(count == 0) {
+                System.out.println(lName + " is not in the list");
             }
         } else if(searchBy == 2) {
+            int count = 0;
             System.out.println("Enter a phone number:");
             String pNumber = scannerhelp.nextLine();
             for (int i = 0; i < contacts.size(); i++) {
@@ -114,9 +137,12 @@ public class ContactList {
                     System.out.println(contacts.get(i));
                 }
             }
+            if(count == 0) {
+                System.out.println(pNumber + " is not in the list");
+            }
         }
     }
-
+    // Display menu
     public void run() {
         Scanner scanner = new Scanner(System.in);
 
@@ -129,46 +155,37 @@ public class ContactList {
             System.out.println("5. List All Students");
             System.out.println("6. Search by First Name");
             System.out.println("7. Search by Last Name");
+            System.out.println("8. Search by Phone Number");
             System.out.println("0. Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
-
+        // Explain different casesthe
             if(choice == 0) {
                 System.out.println("Exiting...");
                 break;
             } else if(choice == 1) {
                 addContact();
-                break;
+
             } else if(choice == 2) {
                 sort(0);
                 printContacts();
-                break;
             } else if(choice == 3) {
                 sort(1);
                 printContacts();
-                break;
             } else if(choice == 4) {
                 sort(2);
                 printContacts();
-                break;
             } else if(choice == 5) {
                 listStudents();
-                break;
             } else if(choice == 6) {
                 Search(0);
-                break;
             } else if(choice == 7) {
                 Search(1);
-                break;
-
             } else if(choice == 8) {
                 Search(2);
-                break;
             }
         }
 
     }
-
-
 }

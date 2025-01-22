@@ -1,6 +1,5 @@
 // Person is the super class for the program
-// P
-// erson has a first name, last name, and phone number
+// Person has a first name, last name, and phone number
 public class Person {
     private String firstName;
     private String lastName;
